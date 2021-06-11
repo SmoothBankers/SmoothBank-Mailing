@@ -1,12 +1,14 @@
-package com.ss.utopia.service;
+package com.ss.sbank.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.stereotype.Service;
 
-import com.ss.utopia.dao.TokenDAO;
-import com.ss.utopia.entities.Message;
+import com.ss.sbank.dao.TokenDAO;
+import com.ss.sbank.entities.Message;
 
+@Service
 public class MessageService {
 	
 	@Autowired

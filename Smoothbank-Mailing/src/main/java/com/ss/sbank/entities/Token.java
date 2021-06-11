@@ -1,4 +1,4 @@
-package com.ss.utopia.entities;
+package com.ss.sbank.entities;
 
 import java.util.Calendar;
 import java.util.UUID;

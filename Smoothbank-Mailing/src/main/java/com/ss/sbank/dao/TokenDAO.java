@@ -1,8 +1,8 @@
-package com.ss.utopia.dao;
+package com.ss.sbank.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.ss.utopia.entities.Token;
+import com.ss.sbank.entities.Token;
 
 public interface TokenDAO extends JpaRepository<Token, String>{
 
