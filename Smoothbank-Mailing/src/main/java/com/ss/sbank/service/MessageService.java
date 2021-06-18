@@ -1,8 +1,10 @@
 package com.ss.sbank.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
+import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.ss.sbank.dao.TokenDAO;
@@ -15,7 +17,7 @@ public class MessageService {
 	TokenDAO tdao;
 	
 	@Autowired
-	MailSender mailSender;
+	JavaMailSender mailSender;
 	
 	public void sendMessage(Message message) {
 		//First, see if the token is in the database already and, if not, save it
@@ -29,12 +31,19 @@ public class MessageService {
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setTo(message.getAddress());
 		email.setSubject(message.getSubject());
-		email.setText(message.getBody() + "/n" + message.getLink() + message.getToken().getSequence());
+		email.setText(message.getBody() + "\n" + message.getLink() + message.getToken().getSequence());
+		email.setFrom("noreply@smoothbank.com");
 		
 		//Prepare the mail sender
 		
+		System.out.println("*********Attempting to send mail**************");
+		try {
+			mailSender.send(email);
+		} catch(MailException e) {
+			System.err.println("Critical mail failure (MessageService line: 38");
+			e.printStackTrace();
+		}
 		
-		mailSender.send(email);
 		
 		
 		

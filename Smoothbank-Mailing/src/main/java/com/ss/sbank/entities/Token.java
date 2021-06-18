@@ -62,5 +62,9 @@ public class Token {
 		this.setObjID(obj);
 		this.setTtl(ttl);
 	}
+	
+	public Token() {
+		//default constructor for POJO
+	}
 
 }
