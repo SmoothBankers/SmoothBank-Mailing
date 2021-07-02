@@ -6,4 +6,7 @@ import com.ss.sbank.entities.Token;
 
 public interface TokenDAO extends JpaRepository<Token, String>{
 
+	
+	public Token getBySequence(String seq);
+	
 }

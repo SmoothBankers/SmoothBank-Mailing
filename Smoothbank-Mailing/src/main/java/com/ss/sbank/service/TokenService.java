@@ -12,8 +12,8 @@ public class TokenService {
 	@Autowired
 	TokenDAO tDAO;
 	
-	public Token getToken(String id) {
-		return tDAO.getById(id);
+	public Token getToken(String seq) {
+		return tDAO.getBySequence(seq);
 	}
 
 }

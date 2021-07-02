@@ -19,14 +19,14 @@ public class Token {
 	 * flexibility, but it falls on the caller to remember what the actual type of
 	 * the object is.
 	 */
-	private String objID;
+	private String objId;
 	/**
 	 * String representation of the token Generation must be handled
 	 */
 	@Id
 	private String sequence;
 	// Time the token was created
-	private Calendar created;
+	private Calendar timeCreated;
 	// Time To Live
 	private Integer ttl;
 
@@ -36,7 +36,7 @@ public class Token {
 	 * @return True if the time passed since creation is less than the time to live
 	 */
 	public boolean isAlive() {
-		return created.getTime().getTime() - Calendar.getInstance().getTime().getTime() <= ttl;
+		return timeCreated.getTime().getTime() - Calendar.getInstance().getTime().getTime() <= ttl;
 	}
 
 	public void generateSequence() {
@@ -59,7 +59,7 @@ public class Token {
 			throw new IllegalArgumentException("Token object string length can not excede 127 characters! (Token constructor error)");
 		}
 		generateSequence();
-		this.setObjID(obj);
+		this.setObjId(obj);
 		this.setTtl(ttl);
 	}
 	
